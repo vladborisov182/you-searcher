@@ -40,7 +40,8 @@ class AdminView(AdminMixin, ModelView):
 class HomeAdminView(AdminMixin, AdminIndexView):
     pass
 
-admin = Admin(app''', 'FlaskApp', url='/', index_view=HomeAdminView(name='Home')''')
+''', 'FlaskApp', url='/', index_view=HomeAdminView(name='Home')'''
+admin = Admin(app)
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Role, db.session))
 admin.add_view(ModelView(Inquiry, db.session))
