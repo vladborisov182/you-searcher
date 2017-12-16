@@ -28,8 +28,8 @@ def register():
     if request.method == 'POST' and form.validate():        
         try:
             user = User(username = request.form['username'], email = request.form['email'], password=request.form['password'], active=True)
-            """role = Role.query.filter(Role.name.contains('user')).first()
-            user_datastore.add_role_to_user(user, role)"""
+            role = Role.query.filter(Role.name.contains('user')).first()
+            user_datastore.add_role_to_user(user, role)
             db.session.add(user)
             db.session.commit()
         except:

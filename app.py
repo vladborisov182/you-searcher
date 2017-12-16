@@ -40,13 +40,13 @@ class AdminView(AdminMixin, ModelView):
 class HomeAdminView(AdminMixin, AdminIndexView):
     pass
 
-''', 'FlaskApp', url='/', index_view=HomeAdminView(name='Home')'''
-admin = Admin(app)
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Role, db.session))
-admin.add_view(ModelView(Inquiry, db.session))
+admin = Admin(app, 'FlaskApp', url='/', index_view=HomeAdminView(name='Home'))
+admin.add_view(AdminView(User, db.session))
+admin.add_view(AdminView(Role, db.session))
+admin.add_view(AdminView(Inquiry, db.session))
 
 ### Flask security ###
+
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
