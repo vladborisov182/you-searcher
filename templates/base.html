@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+        {% block title %}
+        Main page
+        {% endblock %} | Flask app
+    </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <!-- Own css file -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<!-- FontAwesome Icons -->
+    <script src="https://use.fontawesome.com/d0fbcbd626.js"></script>
+
+</head>
+
+<body>
+ 
+    
+
+    {% include 'includes/_navbar.html' %}
+
+    {% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Welcome to YouSearch!</h1>
+        <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam unde numquam alias? Sed eveniet aliquam eaque, ab dolorum, numquam vitae molestias accusantium natus voluptatum reprehenderit doloremque beatae reiciendis, ipsum explicabo! </p>
+        <hr class="my-4">
+        {% if current_user.is_authenticated %}
+        <a class="btn btn-danger" href="{{ url_for('logout')}}">
+            Logout
+        </a>
+        {% else %}
+        <a class="btn btn-outline-success" href="{{ url_for('login')}}" role="button">Login</a>
+        <a class="btn btn-outline-primary" href="{{ url_for('register')}}" role="button">Sign up</a>
+        {% endif %}
+    </div>
+    {% endblock %}
+
+    <!-- Optional JavaScript -->
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>

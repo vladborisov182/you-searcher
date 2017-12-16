@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-3">
+    <div class="col-md-4">
+        {% from "includes/_macros.html" import render_field_with_errors, render_field %}
+        {% include "includes/_messages.html" %}
+
+        <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form" class="container">
+            <h1>{{ _('Login') }}</h1>
+            {{ login_user_form.hidden_tag() }}
+            {{ render_field_with_errors(login_user_form.email, class="form-control") }}
+            {{ render_field_with_errors(login_user_form.password, class="form-control") }}
+            {{ render_field_with_errors(login_user_form.remember, class="form-check-label") }}
+            {{ render_field(login_user_form.next) }}
+            {{ render_field(login_user_form.submit, class="btn btn-primary") }}
+        </form>
+    </div>
+</div>
+{% endblock %}
