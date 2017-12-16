@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
     <!-- Own css file -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 
 	<!-- FontAwesome Icons -->
     <script src="https://use.fontawesome.com/d0fbcbd626.js"></script>
@@ -30,7 +30,7 @@
 
     {% block content %}
     <div class="jumbotron text-center">
-        <h1 class="display-3">Welcome to YouSearch!</h1>
+        <h3 class="display-4">Welcome!</h3>
         <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam unde numquam alias? Sed eveniet aliquam eaque, ab dolorum, numquam vitae molestias accusantium natus voluptatum reprehenderit doloremque beatae reiciendis, ipsum explicabo! </p>
         <hr class="my-4">
         {% if current_user.is_authenticated %}
