@@ -1,7 +1,7 @@
 class Configuration(object):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'postgres+psycopg2://lembsogecgixpr:fef72d9c605d6d7acdaa26f9d1bc125a58f28d6eaa8e80d5bd0f8d7f5d05c68e@ec2-23-23-245-89.compute-1.amazonaws.com:5432/da1mm6uia1ifgg'
+    SQLALCHEMY_DATABASE_URI = 'postgres+psycopg2://esydispabrrdtx:74fe323264f1b9d38bdb43ce157dfba764ed23886a1abb6193927fe9168c87a3@ec2-184-72-228-128.compute-1.amazonaws.com:5432/de553hborc4cpf'
     CSRF_ENABLED = True
     SECRET_KEY='welc0me'
 
