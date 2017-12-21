@@ -16,6 +16,7 @@ api = yapi.YoutubeAPI(api_key)
 def search_videos():
 
     q = request.args.get('q')
+    videos_id_list = []
 
     if q:
         user = current_user
@@ -26,9 +27,11 @@ def search_videos():
 
         results = api.general_search(q, max_results=10)
 
-        videos_id_list = []
+        for result in results.items:
+            if result.id.kind == "youtube#video":
+                videos_id_list.append(result.id.videoId)
 
-        return render_template('search/search.html', videos_id=videos_id_list)
+    return render_template('search/search.html', videos_id=videos_id_list)
 
 @search.route("/history")
 @login_required

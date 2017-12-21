@@ -1,6 +1,8 @@
-from wtforms import Form, StringField, PasswordField
-from wtforms.validators import Email, Length, EqualTo, DataRequired, Email
+from wtforms import Form, PasswordField, StringField
+from wtforms.validators import DataRequired, Email, EqualTo, Length
+
 from models import User
+
 
 class RegisterForm(Form):
     username = StringField('Username', validators = [Length(min=5, max=24)])
