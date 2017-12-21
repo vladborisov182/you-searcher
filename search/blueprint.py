@@ -1,24 +1,22 @@
-from flask import Blueprint
-from flask_security import login_required
-
-from flask_security import current_user
-from flask import render_template, request
-
-from models import *
-from app import db
-
 import datetime
-import yapi
 
+import yapi
+from flask import Blueprint, render_template, request
+from flask_security import current_user, login_required
+
+from app import db
+from config import api_key
+from models import Inquiry, User
 
 search = Blueprint('search', __name__, template_folder='templates')
-api = yapi.YoutubeAPI('AIzaSyCI9Tz7b_kqNCLCv0F12_jUEZQxEoMEk_8')
+api = yapi.YoutubeAPI(api_key)
 
 @search.route("/")
 @login_required
 def search_videos():
 
     q = request.args.get('q')
+    videos_id_list = []
 
     if q:
         user = current_user
@@ -29,23 +27,11 @@ def search_videos():
 
         results = api.general_search(q, max_results=10)
 
-        videos_id_list = []
+        for result in results.items:
+            if result.id.kind == "youtube#video":
+                videos_id_list.append(result.id.videoId)
 
-        i = 0
-        while True:
-            try:
-                if results.items[i].id.kind == "youtube#video":
-                    videos_id_list.append(results.items[i].id.videoId)
-                    i += 1
-                else:
-                    i += 1
-            except IndexError:
-                break
-        return render_template('search/search.html', videos_id=videos_id_list)
-    else:
-        pass
-
-    return render_template('search/search.html')
+    return render_template('search/search.html', videos_id=videos_id_list)
 
 @search.route("/history")
 @login_required

@@ -1,5 +1,6 @@
+from flask_security import RoleMixin, UserMixin
+
 from app import db
-from flask_security import UserMixin, RoleMixin
 
 ### Flask security ###
 
@@ -45,4 +46,3 @@ class Inquiry(db.Model):
 
     def __repr__(self):
         return '%r' % (self.body)
-
