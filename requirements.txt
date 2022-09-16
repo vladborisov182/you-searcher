@@ -25,7 +25,7 @@ isbnlib==3.6.8
 iso3166==0.8
 itsdangerous==0.24
 Jinja2==2.10
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 passlib==1.7.1
 psycopg2==2.7.3.2
